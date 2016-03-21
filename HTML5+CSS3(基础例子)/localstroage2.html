@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+div{width:200px; height:200px; background:red; position:absolute; left:0; top:0;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName('div')[0];
+	window.onstorage=function(ev){
+		console.log(localStorage.b)
+		var json=JSON.parse(localStorage[ev.key]);
+		oDiv.style.left=json.left+'px';
+		oDiv.style.top=json.top+'px';
+	}
+
+};
+
+</script>
+</head>
+
+<body>
+	<div></div>
+</body>
+</html>

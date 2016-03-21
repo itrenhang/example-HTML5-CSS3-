@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div{width:200px;height:200px; background:red; 
+	-webkit-transition:1s all ease;
+	-moz-transition:1s all ease;
+	-ms-transition:1s all ease;
+	-o-transition:1s all ease;
+	transition:1s all ease;
+	box-shadow:2px 2px 5px #000;
+}
+
+</style>
+<script>
+function setStyle(obj,name,value){
+	obj.style['Webkit'+name.charAt(0).toUpperCase()+name.substring(1)]=value;
+	obj.style['Moz'+name.charAt(0).toUpperCase()+name.substring(1)]=value;
+	obj.style['ms'+name.charAt(0).toUpperCase()+name.substring(1)]=value;
+	obj.style['O'+name.charAt(0).toUpperCase()+name.substring(1)]=value;
+	obj.style[name]=value;
+}
+
+window.onload=function(){
+	var oDiv=document.getElementById('div');
+	oDiv.onclick=function(){
+		//oDiv.style.width='400px';	
+		//oDiv.style.height='400px';
+		setStyle(oDiv,'transform','scale(2)');
+		//oDiv.style.transform='scale(2)';	
+	};	
+};
+
+</script>
+</head>
+
+<body>
+	<div id="div"></div>
+</body>
+</html>

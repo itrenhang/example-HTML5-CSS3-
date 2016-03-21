@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>video</title>
+<style>
+*{margin:0; padding:0;} 
+body{text-align:center; background:#000;}
+video{width:800px; }
+.bar_box{width:800px; height:20px; background:#999; margin:-4px auto 0; position:relative;}
+.bar_box div{width:0px; height:20px; background:#0F3;}
+.bar_box span{position:absolute; left:0px; top:0; width:40px; height:20px; background:#330;}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oPlay=document.querySelector('#play');
+	var oPause=document.querySelector('#pause');
+	var oStop=document.querySelector('#stop');
+	var oV=document.querySelector('video');
+	var oBar_box=document.querySelector('.bar_box');
+	var oPro=document.querySelector('.bar_box div');
+	var oBar=document.querySelector('.bar_box span');
+	
+	oPlay.onclick=function(){
+		oV.play();
+	};
+	oPause.onclick=function(){
+		oV.pause();
+	};
+	oStop.onclick=function(){
+		oV.pause();
+		oV.currentTime=0;	
+	};
+	oV.ontimeupdate=function(){
+		var scale=oV.currentTime/oV.duration;
+		var l=oBar_box.offsetWidth;
+		oPro.style.width=scale*oBar_box.offsetWidth+'px';
+		if(l<0){
+			l=0;	
+		}
+		if(l>oBar_box.offsetWidth-oBar.offsetWidth){
+			l=oBar_box.offsetWidth-oBar.offsetWidth;	
+		}
+		oBar.style.left=scale*l+'px';
+	};
+	
+	oBar.onmousedown=function(ev){
+		var disX=ev.clientX-oBar.offsetLeft;
+		document.onmousemove=function(ev){
+			var l=ev.clientX-disX;
+			if(l<0){
+				l=0;	
+			}
+			if(l>oBar_box.offsetWidth-oBar.offsetWidth){
+				l=oBar_box.offsetWidth-oBar.offsetWidth;	
+			}
+			oBar.style.left=l+'px';
+			var s=l/(oBar_box.offsetWidth-oBar.offsetWidth)
+			oPro.style.width=oBar_box.offsetWidth*s+'px';
+			oV.currentTime=oV.duration*s;
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;	
+		};
+		return false;
+	};
+	oBar_box.onclick=function(ev){
+		var dis=ev.clientX-oBar_box.offsetLeft;
+		var scale=dis/oBar_box.offsetWidth;
+		oBar.style.left=scale*(oBar_box.offsetWidth-oBar.offsetWidth)+'px';
+		oPro.style.width=scale*oBar_box.offsetWidth+'px';
+		oV.currentTime=scale*oV.duration;
+	};
+	oBar.onclick=function(ev){
+		ev.cancelBubble=true;
+	};
+},false);
+</script>
+</head>
+
+<body>
+<video src="http://images.sohu.com/ytv/SH/Coke/64036020120714021103.mp4"></video>
+<div class="bar_box">
+	<div></div>
+	<span></span>
+</div>
+<input type="button" value="播放" id="play"/>
+<input type="button" value="暂停" id="pause"/>
+<input type="button" value="停止" id="stop"/>
+</body>
+</html>

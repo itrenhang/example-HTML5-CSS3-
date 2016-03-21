@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+#span1{width:100px; height:100px; position:fixed; right:40px; bottom:40px; background:#000;}
+</style>
+</head>
+
+<body>
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<div>
+	asdasdasd
+	</div><br />
+	<span id="span1"></span>
+</body>
+</html>
+<script>
+   ;(function(){
+		var oBack=document.getElementById('span1');			
+		//var oUl=document.getElementById('ul1');
+		//var aLi=oUl.children;
+		//var oBox=aLi[aLi.length-1];
+		var bOk=false;
+		window.onscroll=function(ev){
+			if(bOk){
+				clearInterval(oBack.timer);
+			}
+			bOk = true;
+			var T = document.documentElement.scrollTop||document.body.scrollTop;
+			if(T>100){
+				oBack.style.display='block';
+			}else{
+				oBack.style.display='none';
+			}
+			//bClick=Math.floor((T+200)/710);
+			//startMove(oBox,bClick*aLi[0].offsetWidth);
+		};
+			//滚轮带动nav
+		oBack.onclick=function(){
+			var start = document.documentElement.scrollTop||document.body.scrollTop;
+			var iTarget = 0;
+			var dis = iTarget - start;
+			var count = Math.floor(3000/30);
+			var n = 0;
+			clearInterval(oBack.timer);
+			oBack.timer = setInterval(function(){
+				n++;
+				var a = 1-n/count;
+				bOk = false;
+				document.documentElement.scrollTop=document.body.scrollTop = start+dis*(1-Math.pow(a,3));
+				if(n==count){
+					clearInterval(oBack.timer);
+				}
+			},30);
+		};
+		
+	})();
+
+</script>

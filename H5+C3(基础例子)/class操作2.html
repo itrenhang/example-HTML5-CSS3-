@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+li.show{background:red;}
+</style>
+<script>
+window.onload=function(){
+	var oUl=document.querySelector('#box');
+	var oLi=document.querySelector('li');
+	var aLi=document.querySelectorAll('.on');
+	//oUl.style.background='red';
+	//oLi.style.background='red';
+/*	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.background='red';
+	}
+	
+*/	
+	//alert(oLi.classList)
+	//oLi.classList.add('show');
+	//oLi.classList.remove('on');
+	//alert(oLi.classList.contains('on'));
+	oLi.onclick=function(){
+		oLi.classList.toggle('show');	
+	};
+};
+</script>
+
+</head>
+
+<body>
+	<ul id="box">
+		<li class="on2"></li>
+		<li class="on show"></li>
+		<li class="on2"></li>
+		<li class="on show active"></li>
+	</ul>
+</body>
+</html>

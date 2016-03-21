@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+.box{width:200px;height:200px; margin:100px auto; position:relative; z-index:2;}
+.mask{width:200px;height:200px; position:absolute; top:0; left:0; z-index:2;
+	-wenkit-transition:.5s all linear;
+	-moz-transition:.5s all linear;
+	-ms-transition:.5s all linear;
+	-o-transition:.5s all linear;
+	transition:.5s all linear;
+}
+.cd{width:194px; height:194px; position:absolute; top:0; left:3px; z-index:1;
+	-wenkit-transition:.5s all linear;
+	-moz-transition:.5s all linear;
+	-ms-transition:.5s all linear;
+	-o-transition:.5s all linear;
+	transition:.5s all linear;
+}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oBox=document.querySelector('.box');
+	var oMask=document.querySelector('.mask');
+	var oCd=document.querySelector('.cd');
+	oBox.onmouseover=function(){
+		oMask.style.WebkitTransform='translate(0,40px)';
+		oCd.style.WebkitTransform='translate(0,-40px) rotate(180deg)';
+	};
+	oBox.onmouseout=function(){
+		oMask.style.WebkitTransform='translate(0,0px)';
+		oCd.style.WebkitTransform='translate(0,0px) rotate(-180deg)';
+	};
+},false);
+</script>
+</head>
+
+<body>
+	<div class="box">
+		<img class="mask" src="cd/img_01.jpg" />
+		<img class="cd" src="cd/cd.png" />
+	</div>
+</body>
+</html>

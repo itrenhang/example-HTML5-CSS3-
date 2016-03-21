@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+
+for(var name in navigator.geolocation){
+	document.write(name+'<br />')
+}
+navigator.geolocation.getCurrentPosition(function(pos){
+	document.write('精度：'+pos.coords.longitude+'维度：'+pos.coords.latitude);
+},function(){
+	alert('失败')
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+#clock{width:200px; height:200px; border:6px solid #000; border-radius:50%; margin:100px auto; position:relative;}
+i{width:10px; height:10px; border-radius:50%; position:absolute; top:50%; left:50%; margin-left:-5px; margin-top:-5px; background:#000;}
+em{ position:absolute;left:-4px; top:12px; font-style:normal;}
+#clock div{-webkit-transform-origin:center bottom;}
+#hou{width:6px; height:50px; background:red; border-radius:100% 100% 0 0; position:absolute; top:50px; left:50%; margin-left:-3px;}
+#min{width:4px; height:60px; background:black; border-radius:100% 100% 0 0; position:absolute; top:40px; left:50%; margin-left:-2px;}
+#sec{width:2px; height:70px; background:black; border-radius:100% 100% 0 0; position:absolute; top:30px; left:50%; margin-left:-1px;}
+span{width:4px; height:8px; background:#000; position:absolute; top:0; left:50%; margin-left:-2px; -webkit-transform-origin:center 100px;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oClock=document.querySelector('#clock');
+	var oHou=document.querySelector('#hou');
+	var oMin=document.querySelector('#min');
+	var oSec=document.querySelector('#sec');
+	var n=60;
+	for(var i=0;i<n;i++){
+		var oS=document.createElement('span');
+		oClock.appendChild(oS);
+		if(i%5==0){
+			oS.style.height='14px';	
+			var em=document.createElement('em');
+			em.innerHTML=i/5||12;
+			oS.appendChild(em);
+			em.style.WebkitTransform='rotate('+(-i*6)+'deg)';
+		}
+		
+		oS.style.WebkitTransform='rotate('+i*6+'deg)';
+	}
+	
+	function clock(){
+		var oDate=new Date();
+		var h=oDate.getHours();
+		var m=oDate.getMinutes();
+		var s=oDate.getSeconds();
+		oHou.style.WebkitTransform='rotate('+(h*30+m/60*30)+'deg)';
+		oMin.style.WebkitTransform='rotate('+(m*6+s/60*6)+'deg)';
+		oSec.style.WebkitTransform='rotate('+s*6+'deg)';
+	}
+	clock();
+	setInterval(clock,1000);
+	
+},false);
+
+</script>
+</head>
+
+<body>
+	<div id="clock">
+		<div id="hou"></div>
+		<div id="min"></div>
+		<div id="sec"></div>
+		<i></i>
+	</div>
+</body>
+</html>

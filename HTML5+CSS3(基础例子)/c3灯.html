@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{background:#000;}
+div{width:200px; height:200px; background:#000; border-radius:50%; -webkit-transition:1s all ease; margin:200px auto; text-align:center; line-height:200px; color:#fff;}
+div.on{background:#fff; box-shadow:0 0 50px #fff; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oBtn=document.querySelector('input');
+	var oDiv=document.querySelectorAll('body div')[0];
+	//alert(oBtn)
+	oBtn.onclick=function(){
+		oDiv.classList.toggle('on');
+		//oDiv.classList.add('on');
+		//alert(oDiv.classList.contains('on'))
+	}
+},false);
+</script>
+</head>
+
+<body>
+<div></div>
+<input type="button" value="开关" />
+</body>
+</html>

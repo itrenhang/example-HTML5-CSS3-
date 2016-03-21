@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#000;overflow:hidden;}
+div{width:133px; height:200px; margin:140px auto; position:relative; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateX(0deg) rotateY(0deg); }
+span{width:100%; height:100%; position:absolute; top:0; left:0; background:url(img/1.jpg) no-repeat; -webkit-transform: rotateY(0deg) translateZ(0px);}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oDiv=document.querySelector('.box');
+	var n=11;
+	for(var i=0;i<n;i++){
+		var oS=document.createElement('span');
+		oS.style.background='url(img/'+(i+1)+'.jpg) no-repeat';	
+		oDiv.appendChild(oS);
+		oS.style.WebkitTransition='1s all ease '+(n-i)*300+'ms';
+		;(function(oS,i){
+			setTimeout(function(){
+				oS.style.WebkitTransform='rotateY('+360/n*i+'deg) translateZ(350px)';
+			},0);
+		})(oS,i);
+	}
+	var y=0;
+	var x=0;
+	var iSpeedX=0;
+	var iSpeedY=0;
+	var lastX=0;
+	var lastY=0;
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev||event;
+		var disX=oEvent.clientX-y;
+		var disY=oEvent.clientY-x;
+		document.onmousemove=function(ev){
+			var oEvent=ev||event;
+			y=oEvent.clientX-disX;
+			x=oEvent.clientY-disY;
+			oDiv.style.WebkitTransform='perspective(800px) rotateX('+-x/10+'deg) rotateY('+y/10+'deg)';
+			iSpeedX=oEvent.clientX-lastX;
+			lastX=oEvent.clientX;
+			iSpeedY=oEvent.clientY-lastY;
+			lastY=oEvent.clientY;
+			
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;	
+			document.onmouseup=null;
+			clearInterval(oDiv.timer);
+			oDiv.timer=setInterval(function(){
+				iSpeedX*=0.95;
+				y+=iSpeedX;
+				iSpeedY*=0.95;
+				x+=iSpeedY;
+				oDiv.style.WebkitTransform='perspective(800px) rotateX('+-x/10+'deg) rotateY('+y/10+'deg)';
+				if(Math.abs(iSpeedX)<1)iSpeedX=0;
+				if(Math.abs(iSpeedY)<1)iSpeedY=0;
+				if(iSpeedX==0&&iSpeedY==0){
+					clearInterval(oDiv.timer);	
+				}
+			},30);
+			
+		};
+		return false;
+	}
+	
+},false);
+</script>
+</head>
+
+<body>
+	<div class="box">
+	</div>
+
+</body>
+</html>

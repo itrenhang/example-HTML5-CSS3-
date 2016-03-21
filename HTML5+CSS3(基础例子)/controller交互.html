@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="test">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="angular.js"></script>
+<script>
+var app=angular.module('test',[]);
+app.controller('index',function($scope,$http){
+	$http.get('data.txt',{})
+	.success(function(result){
+		$scope.arr=result;
+	})
+	.error(function(){});
+});
+</script>
+</head>
+
+<body ng-controller="index">
+	<ul>
+		<li ng-repeat="item in arr">我叫{{item.name}}，今年{{item.age}}</li>
+	</ul>
+</body>
+</html>

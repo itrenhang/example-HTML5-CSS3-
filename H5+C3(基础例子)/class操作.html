@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+
+</style>
+<script>
+window.onload=function(){
+	var oUl=document.querySelector('#box');
+	var oLi=document.querySelector('li');
+	var aLi=document.querySelectorAll('.on');
+	//oUl.style.background='red';
+	//oLi.style.background='red';
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.background='red';
+	}
+	
+};
+</script>
+
+</head>
+
+<body>
+	<ul id="box">
+		<li class="on"></li>
+		<li class="on show"></li>
+		<li class="on2"></li>
+		<li class="on show active"></li>
+	</ul>
+</body>
+</html>

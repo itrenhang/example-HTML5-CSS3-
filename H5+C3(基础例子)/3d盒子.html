@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+div{width:200px; height:200px; position:absolute; top:50%; left:50%; margin-top:-100px; margin-left:-100px; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateX(0deg) rotateY(0deg); -webkit-transition:1s all ease; }
+span{position:absolute; top:0; left:0; width:200px; height:200px; text-align:center; line-height:200px; font-size:40px; opacity:.8;}
+.span1{ background:red;-webkit-transform:translateZ(-100px) scale(1,-1);}
+.span2{ background:yellow;-webkit-transform:translateZ(100px);}
+.span3{ background:blue;-webkit-transform:translateY(-100px) rotateX(90deg);}
+.span4{ background:pink;-webkit-transform:translateY(100px) rotateX(-90deg);}
+.span5{ background:#0F0;-webkit-transform:translateX(-100px) rotateY(-90deg);}
+.span6{ background:#0F0;-webkit-transform:translateX(100px) rotateY(90deg);}
+div:active{-webkit-transform:perspective(800px) rotateX(-240deg) rotateY(0deg)}
+
+</style>
+<script>
+
+</script>
+</head>
+
+<body>
+	<div>
+		<span class="span1">后</span>
+		<span class="span2">前</span>
+		<span class="span3">上</span>
+		<span class="span4">下</span>
+		<span class="span5">左</span>
+		<span class="span6">右</span>
+	</div>
+
+</body>
+</html>

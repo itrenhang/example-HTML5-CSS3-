@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+p{text-shadow:0 0 0 #000; font-size:50px; font-family:'Microsoft YaHei'; text-align:center; margin:300px auto;}
+div{width:100px; height:100px; border-radius:50%; 
+background:-webkit-radial-gradient(red 0%,red 40%,yellow,#fff);
+ position:absolute;top:0;left:0; box-shadow:0 0 100px yellow;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oDiv=document.querySelector('div');
+	var oP=document.querySelector('p');
+	document.onmousemove=function(ev){
+		var oEvent=ev||event;
+		oDiv.style.top=oEvent.clientY-oDiv.offsetHeight/2+'px';
+		oDiv.style.left=oEvent.clientX-oDiv.offsetWidth/2+'px';
+		var x=oP.offsetWidth/2+oP.offsetLeft-oEvent.clientX;
+		var y=oP.offsetHeight/2+oP.offsetTop-oEvent.clientY;
+		var c=Math.sqrt(x*x+y*y);
+		oP.style.textShadow=x/3+'px '+y/3+'px '+c/10+'px #000';
+	};
+	
+},false);
+</script>
+</head>
+
+<body>
+	<p>测试文字</p>
+	<div></div>
+</body>
+</html>

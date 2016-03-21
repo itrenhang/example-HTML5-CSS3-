@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+@keyframes test{
+	from{left:0;}
+	to{left:-400px;}	
+}
+*{margin:0;padding:0;}
+.div1{width:400px; height:40px; margin:100px auto; border-radius:20px; overflow:hidden; position:relative;}
+.div2{width:800px; height:40px; 
+background:-webkit-repeating-linear-gradient(45deg,#000 0px,#000 10px,#fff 10px,#fff 20px); position:absolute; top:0; left:0;
+-webkit-animation-name:test;
+-webkit-animation-duration:3s;
+-webkit-animation-timing-function:linear;
+-webkit-animation-iteration-count:infinite;
+}
+span{font-weight:bold;}
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var aInp=document.querySelectorAll('input');	
+	var aS=document.querySelectorAll('span');
+	var oDiv=document.querySelector('.div2');
+	var color1='blue';
+	var color2='#fff';
+	for(var i=0;i<aInp.length;i++){
+		;(function(i){
+			aInp[i].onchange=function(){
+				if(i%2==0){
+					aS[i].style.color=aInp[i].value;
+					color1=aInp[i].value;
+				}else{
+					aS[i].style.color=aInp[i].value;
+					color2=aInp[i].value;
+				}
+				oDiv.style.background='-webkit-repeating-linear-gradient(45deg,'+color1+' 0px,'+color1+' 10px,'+color2+' 10px,'+color2+' 20px)';
+			};
+		})(i);
+	}
+},false);
+</script>
+</head>
+
+<body>
+	颜色1：
+	<input type="color" value="#000000"/>
+	<span class="span1">color</span>
+	<br />
+	颜色2：
+	<input type="color" value="#ffffff"/>
+	<span class="span2">color</span>
+	<div class="div1">
+		<div class="div2"></div>
+	</div>
+</body>
+</html>

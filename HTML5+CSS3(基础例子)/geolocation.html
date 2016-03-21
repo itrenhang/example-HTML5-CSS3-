@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+navigator.geolocation.getCurrentPosition(function(pos){
+	for(var name in pos){
+		document.write(name+'<br />');
+	}
+},function(){
+	alert('失败')
+})
+</script>
+</head>
+
+<body>
+</body>
+</html>

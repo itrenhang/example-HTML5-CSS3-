@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+ul{width:300px; height:200px; position:absolute; top:200px; left:50%; margin-left:-150px;
+perspective:800px;}
+li{width:300px; height:200px; position:absolute; top:0; left:0; background:#0CC; text-align:center; line-height:200px; font-size:50px; border:1px solid #000; -webkit-transition:1s all ease;}
+li.l2{-webkit-transform:translate(-260px) rotateY(65deg); opacity:0; z-index:1;}
+li.l1{ -webkit-transform:translate(-200px) rotateY(60deg); opacity:0.8; z-index:3;}
+li.cur{ z-index:5;}
+li.r1{-webkit-transform:translate(200px) rotateY(-60deg); opacity:0.8; z-index:3;}
+li.r2{-webkit-transform:translate(260px) rotateY(-65deg); opacity:0; z-index:1;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oPrev=document.querySelector('.prev');	
+	var oNext=document.querySelector('.next');	
+	var aLi=document.querySelectorAll('li');
+	var aClass=[];
+	for(var i=0;i<aLi.length;i++){
+		aClass.push(aLi[i].className);	
+	}
+	oPrev.onclick=function(){
+		aClass.unshift(aClass.pop());
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className=aClass[i];	
+		}	
+	};
+	oNext.onclick=function(){
+		aClass.push(aClass.shift());
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].className=aClass[i];	
+		}	
+	};
+	
+},false);
+</script>
+</head>
+
+<body>
+	<a href="javascript:;" class="next">←</a>
+	<a href="javascript:;" class="prev">→</a>
+	<ul>
+		<li class="cur">1</li>
+		<li class="r1">2</li>
+		<li class="r2">3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li class="l2">7</li>
+		<li class="l1">8</li>
+	</ul>
+
+</body>
+</html>

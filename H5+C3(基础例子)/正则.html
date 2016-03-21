@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+
+</style>
+<script>
+window.onload=function(){
+	var oTxt=document.getElementById('txt');
+	var re=/^1[34578]\d{9}$/
+	oTxt.onblur=function(){
+		alert(re.test(oTxt.value));
+	};	
+};
+</script>
+
+</head>
+
+<body>
+	<input type="text" id="txt" />
+</body>
+</html>
